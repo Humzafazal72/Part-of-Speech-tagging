@@ -16,6 +16,8 @@ with open('POS_tokenizer.pickle', 'rb') as file:
 with open('enc.pkl', 'rb') as file:
     pos = pickle.load(file)
 
+lstm = load_model('lstm_model.h5')
+
 # Swapping POS to map back to labels
 swapped_pos = {v: k for k, v in pos.items()}
 
@@ -88,7 +90,6 @@ if input_text and button:
         processed_input = preprocess_input(clean_sentence)
 
         # Load LSTM model
-        lstm = load_model('lstm_model.h5')
         pred = lstm.predict(processed_input)
         
         # Process prediction to get POS tags
