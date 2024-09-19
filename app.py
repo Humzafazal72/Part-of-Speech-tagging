@@ -75,13 +75,13 @@ def display_with_color(words, pos_tags):
     st.markdown(f"<p>{colored_text}</p>", unsafe_allow_html=True)
 
 # Input: Accept string with a word count less than or equal to 30
-input_text = st.text_area("Enter a string (Max 30 words):", "")
-
-if input_text:
+input_text = st.text_area("Enter the text (Max 30 words):", "")
+button = st.button(label='Submit')
+if input_text and button:
     words = input_text.split()
     word_count = len(words)
     if word_count > 30:
-        st.error("The input exceeds the 30-word limit. Please enter a shorter string.")
+        st.error("The input exceeds the 30-word limit. Please enter a shorter text.")
     else:
         # Clean and preprocess the input text
         clean_sentence = clean_input(input_text)
