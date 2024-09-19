@@ -8,10 +8,10 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 st.title("POS Tagging App")
 
 # Load necessary files
-with open('weights\POS_tokenizer.pickle', 'rb') as file:
+with open('POS_tokenizer.pickle', 'rb') as file:
     tokenizer = pickle.load(file)
 
-with open('weights\enc.pkl', 'rb') as file:
+with open('enc.pkl', 'rb') as file:
     pos = pickle.load(file)
 
 # Swapping POS to map back to labels
@@ -86,7 +86,7 @@ if input_text:
         processed_input = preprocess_input(clean_sentence)
 
         # Load LSTM model
-        lstm = load_model('weights\lstm_model.h5')
+        lstm = load_model('lstm_model.h5')
         pred = lstm.predict(processed_input)
         
         # Process prediction to get POS tags
